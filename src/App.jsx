@@ -16,7 +16,6 @@ const App = () => {
   const [day2, setDay2] = useState();
   const [day3, setDay3] = useState();
   const [day4, setDay4] = useState();
-  const [day5, setDay5] = useState();
 
   // if the use is using the app and its inUse mode the inUse state set to true
   const inUseHandler = () => {
@@ -47,7 +46,6 @@ const App = () => {
       const dt2 = currentDateDay + 2;
       const dt3 = currentDateDay + 3;
       const dt4 = currentDateDay + 4;
-      const dt5 = currentDateDay + 5;
       const main = api[1].list;
       const filteredArray1 = main.filter(
         (item) => +item.dt_txt.split(" ")[0].split("-")[2] === dt1
@@ -61,15 +59,12 @@ const App = () => {
       const filteredArray4 = main.filter(
         (item) => +item.dt_txt.split(" ")[0].split("-")[2] === dt4
       );
-      const filteredArray5 = main.filter(
-        (item) => +item.dt_txt.split(" ")[0].split("-")[2] === dt5
-      );
+
 
       setDay1(filteredArray1);
       setDay2(filteredArray2);
       setDay3(filteredArray3);
       setDay4(filteredArray4);
-      setDay5(filteredArray5);
     }
   };
 
@@ -109,7 +104,6 @@ const App = () => {
           day2={day2}
           day3={day3}
           day4={day4}
-          day5={day5}
         />
       </div>
     </div>
