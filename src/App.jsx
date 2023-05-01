@@ -1,3 +1,4 @@
+//imports
 import React, { useEffect, useState } from "react";
 import SideMenu from "./Components/SideMenu/SideMenu";
 import Content from "./Components/Content/Content";
@@ -5,6 +6,7 @@ import { getSunrise, getSunset } from "sunrise-sunset-js";
 import "./App.css";
 
 const App = () => {
+  //states
   const [inUse, setInUse] = useState(false);
   const [loading, setLoading] = useState(false);
   const [api, setApi] = useState();
@@ -16,23 +18,29 @@ const App = () => {
   const [day4, setDay4] = useState();
   const [day5, setDay5] = useState();
 
+  // if the use is using the app and its inUse mode the inUse state set to true
   const inUseHandler = () => {
     setInUse(true);
   };
+
+  //this function show the loading in content component
   const loadinHandler = (data) => {
     setLoading(data);
   };
 
+  // if there is error in getting data from api this function shows it
   const errorHandler = (data) => {
     setError(data);
   };
 
+  //this finction set the api to related state
   const apiHandler = (currentData, nextData) => {
     let array = [currentData, nextData];
     setApi(array);
   };
 
-  const showNextDays = async () => {
+  // this function will set the next 4 days highlights to each related state
+  const showNextDays = () => {
     if (api !== undefined) {
       const currentDateDay = +Date().split(" ")[2];
       const dt1 = currentDateDay + 1;
@@ -41,19 +49,19 @@ const App = () => {
       const dt4 = currentDateDay + 4;
       const dt5 = currentDateDay + 5;
       const main = api[1].list;
-      const filteredArray1 = await main.filter(
+      const filteredArray1 = main.filter(
         (item) => +item.dt_txt.split(" ")[0].split("-")[2] === dt1
       );
-      const filteredArray2 = await main.filter(
+      const filteredArray2 = main.filter(
         (item) => +item.dt_txt.split(" ")[0].split("-")[2] === dt2
       );
-      const filteredArray3 = await main.filter(
+      const filteredArray3 = main.filter(
         (item) => +item.dt_txt.split(" ")[0].split("-")[2] === dt3
       );
-      const filteredArray4 = await main.filter(
+      const filteredArray4 = main.filter(
         (item) => +item.dt_txt.split(" ")[0].split("-")[2] === dt4
       );
-      const filteredArray5 = await main.filter(
+      const filteredArray5 = main.filter(
         (item) => +item.dt_txt.split(" ")[0].split("-")[2] === dt5
       );
 
@@ -65,6 +73,7 @@ const App = () => {
     }
   };
 
+  // this function show the searched city sunset and sunrise based on the user local time 
   const sunHandler = () => {
     if (api !== undefined) {
       let fsunrise = getSunrise(api[0].coord.lat, api[0].coord.lon) + "";
@@ -74,6 +83,7 @@ const App = () => {
     }
   };
 
+  //useeffects
   useEffect(() => {
     sunHandler();
     showNextDays();

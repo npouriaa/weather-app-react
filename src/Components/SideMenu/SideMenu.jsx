@@ -1,3 +1,4 @@
+// imports
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,6 +11,7 @@ import {
 import "./SideMenu.css";
 
 const SideMenu = (props) => {
+  //states
   const [loading, setLoading] = useState(true);
   const [inUse, setInUse] = useState(false);
   const [description, setDescription] = useState("");
@@ -22,6 +24,7 @@ const SideMenu = (props) => {
   const txtRef = useRef();
   const frmRef = useRef();
 
+  //fill the current dat date info function
   const fillDateDetails = () => {
     let weekdays = [
       "Sunday",
@@ -38,6 +41,7 @@ const SideMenu = (props) => {
     return date;
   };
 
+  // this function show the cuurent time in the searched city based on the searched city local time
   const getTimeFromTimezoneCode = (timezoneCode) => {
     // Convert the timezone code to minutes
     const timezoneOffsetMins = timezoneCode / 60;
@@ -64,6 +68,7 @@ const SideMenu = (props) => {
     return formattedTime;
   };
 
+  // this function fill the searched city current data in jsx elements
   const showCurrentWeather = () => {
     let content;
     if (!loading) {
@@ -110,6 +115,7 @@ const SideMenu = (props) => {
     return content;
   };
 
+  //this function set the searched city current data to each related state 
   const setCurrentWeaherDetails = (data, currentLocationImg) => {
     setCurrentWeatherImgSrc(
       `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
@@ -123,6 +129,7 @@ const SideMenu = (props) => {
     frmRef.current.reset();
   };
 
+  // this function invoke when the form submit and get and get datas from API's
   const currentWeatherReaquest = async (e) => {
     e.preventDefault();
     setInUse(true);
@@ -135,8 +142,10 @@ const SideMenu = (props) => {
       const currentLocationImg = await axios.get(
         `https://api.unsplash.com/search/photos?query=${txtRef.current.value}&client_id=-Y859Zedlj5rmyD9NfYtG-9oJRu_w-3U32WuydaWhJY`
       );
-      const next5WeatherApi = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${txtRef.current.value}&appid=98f9d3c0cc63e0b6689d74759cf58240&units=metric`)
-      props.apiHandler(responseWeather.data , next5WeatherApi.data);
+      const next5WeatherApi = await axios.get(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${txtRef.current.value}&appid=98f9d3c0cc63e0b6689d74759cf58240&units=metric`
+      );
+      props.apiHandler(responseWeather.data, next5WeatherApi.data);
       setCurrentWeaherDetails(
         responseWeather.data,
         currentLocationImg.data.results[0].urls.small_s3
@@ -150,6 +159,7 @@ const SideMenu = (props) => {
     props.inUseHandler();
   };
 
+  //useeffects
   useEffect(() => {
     txtRef.current.focus();
   }, []);
@@ -162,20 +172,22 @@ const SideMenu = (props) => {
         className="form"
         action=""
       >
-        <svg
-          onClick={(e) => currentWeatherReaquest(e)}
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-          />
-        </svg>
+        <button className="search-btn" type="submit">
+          <svg
+            onClick={(e) => currentWeatherReaquest(e)}
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+            />
+          </svg>
+        </button>
         <input
           required
           ref={txtRef}

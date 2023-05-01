@@ -16,13 +16,19 @@
 }
 
 .form svg {
-  cursor: pointer;
   height: 25px;
   transition: all 0.2s;
   color: #4b08c7;
 }
 
-.form svg:hover {
+.search-btn {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.form .search-btn:hover svg{
   transform: scale(1.3);
 }
 

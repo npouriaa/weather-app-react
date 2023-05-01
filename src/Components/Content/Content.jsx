@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+// imports
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Content.css";
 import {
@@ -10,6 +11,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Content = (props) => {
+  
+  //this function fill and show the next 4 days highlights from the props (the props comes from App components)
   const showContent = () => {
     let content;
     if (props.api) {
@@ -70,58 +73,613 @@ const Content = (props) => {
             </div>
           </div>
           <div className="nextdays">
-            <h3>Next 5 Day's Highlights</h3>
+            <h3>Next 4 Day's Highlights</h3>
             <div className="next-highlights">
               <div className="highlight">
-                <p className="date">1200</p>
+                <p className="date">
+                  {props.day1 !== undefined ? (
+                    <p>{props.day1[0].dt_txt.split(" ")[0]}</p>
+                  ) : (
+                    <></>
+                  )}
+                </p>
                 <div className="status">
                   <div className="date-status">
-                    <p className="clock">12:12</p>
+                    <p className="clock">
+                      {props.day1 !== undefined ? (
+                        <p>{props.day1[0].dt_txt.split(" ")[1]}</p>
+                      ) : (
+                        <></>
+                      )}
+                    </p>
                     <img
                       className="icon"
-                      src="https://openweathermap.org/img/wn/10d@2x.png"
+                      src={
+                        props.day1 !== undefined
+                          ? `https://openweathermap.org/img/wn/${props.day1[0].weather[0].icon}@2x.png`
+                          : ""
+                      }
                       alt=""
                     />
-                    <div className="temp">17°C / 2°C</div>
+                    <div className="temp">
+                      {props.day1 !== undefined ? (
+                        <p>
+                          {props.day1[0].main.temp_min}°C /
+                          {props.day1[0].main.temp_max}°C
+                        </p>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
                   </div>
                   <div className="date-status">
-                    <p className="clock">12:12</p>
+                    <p className="clock">
+                      {props.day1 !== undefined ? (
+                        <p>{props.day1[2].dt_txt.split(" ")[1]}</p>
+                      ) : (
+                        <></>
+                      )}
+                    </p>
                     <img
                       className="icon"
-                      src="https://openweathermap.org/img/wn/10d@2x.png"
+                      src={
+                        props.day1 !== undefined
+                          ? `https://openweathermap.org/img/wn/${props.day1[2].weather[0].icon}@2x.png`
+                          : ""
+                      }
                       alt=""
                     />
-                    <div className="temp">17°C / 2°C</div>
+                    <div className="temp">
+                      {props.day1 !== undefined ? (
+                        <p>
+                          {props.day1[4].main.temp_min}°C /
+                          {props.day1[4].main.temp_max}°C
+                        </p>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
                   </div>
                   <div className="date-status">
-                    <p className="clock">12:12</p>
+                    <p className="clock">
+                      {props.day1 !== undefined ? (
+                        <p>{props.day1[4].dt_txt.split(" ")[1]}</p>
+                      ) : (
+                        <></>
+                      )}
+                    </p>
                     <img
                       className="icon"
-                      src="https://openweathermap.org/img/wn/10d@2x.png"
+                      src={
+                        props.day1 !== undefined
+                          ? `https://openweathermap.org/img/wn/${props.day1[4].weather[0].icon}@2x.png`
+                          : ""
+                      }
                       alt=""
                     />
-                    <div className="temp">17°C / 2°C</div>
+                    <div className="temp">
+                      {props.day1 !== undefined ? (
+                        <p>
+                          {props.day1[4].main.temp_min}°C /
+                          {props.day1[4].main.temp_max}°C
+                        </p>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
                   </div>
                   <div className="date-status">
-                    <p className="clock">12:12</p>
+                    <p className="clock">
+                      {props.day1 !== undefined ? (
+                        <p>{props.day1[6].dt_txt.split(" ")[1]}</p>
+                      ) : (
+                        <></>
+                      )}
+                    </p>
                     <img
                       className="icon"
-                      src="https://openweathermap.org/img/wn/10d@2x.png"
+                      src={
+                        props.day1 !== undefined
+                          ? `https://openweathermap.org/img/wn/${props.day1[6].weather[0].icon}@2x.png`
+                          : ""
+                      }
                       alt=""
                     />
-                    <div className="temp">17°C / 2°C</div>
+                    <div className="temp">
+                      {props.day1 !== undefined ? (
+                        <p>
+                          {props.day1[6].main.temp_min}°C /
+                          {props.day1[6].main.temp_max}°C
+                        </p>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
                   </div>
                   <div className="date-status">
-                    <p className="clock">12:12</p>
+                    <p className="clock">
+                      {props.day1 !== undefined ? (
+                        <p>{props.day1[7].dt_txt.split(" ")[1]}</p>
+                      ) : (
+                        <></>
+                      )}
+                    </p>
                     <img
                       className="icon"
-                      src="https://openweathermap.org/img/wn/10d@2x.png"
+                      src={
+                        props.day1 !== undefined
+                          ? `https://openweathermap.org/img/wn/${props.day1[7].weather[0].icon}@2x.png`
+                          : ""
+                      }
                       alt=""
                     />
-                    <div className="temp">17°C / 2°C</div>
+                    <div className="temp">
+                      {props.day1 !== undefined ? (
+                        <p>
+                          {props.day1[7].main.temp_min}°C /
+                          {props.day1[7].main.temp_max}°C
+                        </p>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
+              <div className="highlight">
+                <p className="date">
+                  {props.day2 !== undefined ? (
+                    <p>{props.day2[0].dt_txt.split(" ")[0]}</p>
+                  ) : (
+                    <></>
+                  )}
+                </p>
+                <div className="status">
+                  <div className="date-status">
+                    <p className="clock">
+                      {props.day2 !== undefined ? (
+                        <p>{props.day2[0].dt_txt.split(" ")[1]}</p>
+                      ) : (
+                        <></>
+                      )}
+                    </p>
+                    <img
+                      className="icon"
+                      src={
+                        props.day2 !== undefined
+                          ? `https://openweathermap.org/img/wn/${props.day2[0].weather[0].icon}@2x.png`
+                          : ""
+                      }
+                      alt=""
+                    />
+                    <div className="temp">
+                      {props.day2 !== undefined ? (
+                        <p>
+                          {props.day2[0].main.temp_min}°C /
+                          {props.day2[0].main.temp_max}°C
+                        </p>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  </div>
+                  <div className="date-status">
+                    <p className="clock">
+                      {props.day2 !== undefined ? (
+                        <p>{props.day2[2].dt_txt.split(" ")[1]}</p>
+                      ) : (
+                        <></>
+                      )}
+                    </p>
+                    <img
+                      className="icon"
+                      src={
+                        props.day2 !== undefined
+                          ? `https://openweathermap.org/img/wn/${props.day2[2].weather[0].icon}@2x.png`
+                          : ""
+                      }
+                      alt=""
+                    />
+                    <div className="temp">
+                      {props.day2 !== undefined ? (
+                        <p>
+                          {props.day2[4].main.temp_min}°C /
+                          {props.day2[4].main.temp_max}°C
+                        </p>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  </div>
+                  <div className="date-status">
+                    <p className="clock">
+                      {props.day2 !== undefined ? (
+                        <p>{props.day2[4].dt_txt.split(" ")[1]}</p>
+                      ) : (
+                        <></>
+                      )}
+                    </p>
+                    <img
+                      className="icon"
+                      src={
+                        props.day2 !== undefined
+                          ? `https://openweathermap.org/img/wn/${props.day2[4].weather[0].icon}@2x.png`
+                          : ""
+                      }
+                      alt=""
+                    />
+                    <div className="temp">
+                      {props.day2 !== undefined ? (
+                        <p>
+                          {props.day2[4].main.temp_min}°C /
+                          {props.day2[4].main.temp_max}°C
+                        </p>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  </div>
+                  <div className="date-status">
+                    <p className="clock">
+                      {props.day2 !== undefined ? (
+                        <p>{props.day2[6].dt_txt.split(" ")[1]}</p>
+                      ) : (
+                        <></>
+                      )}
+                    </p>
+                    <img
+                      className="icon"
+                      src={
+                        props.day2 !== undefined
+                          ? `https://openweathermap.org/img/wn/${props.day2[6].weather[0].icon}@2x.png`
+                          : ""
+                      }
+                      alt=""
+                    />
+                    <div className="temp">
+                      {props.day2 !== undefined ? (
+                        <p>
+                          {props.day2[6].main.temp_min}°C /
+                          {props.day2[6].main.temp_max}°C
+                        </p>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  </div>
+                  <div className="date-status">
+                    <p className="clock">
+                      {props.day2 !== undefined ? (
+                        <p>{props.day2[7].dt_txt.split(" ")[1]}</p>
+                      ) : (
+                        <></>
+                      )}
+                    </p>
+                    <img
+                      className="icon"
+                      src={
+                        props.day2 !== undefined
+                          ? `https://openweathermap.org/img/wn/${props.day2[7].weather[0].icon}@2x.png`
+                          : ""
+                      }
+                      alt=""
+                    />
+                    <div className="temp">
+                      {props.day2 !== undefined ? (
+                        <p>
+                          {props.day2[7].main.temp_min}°C /
+                          {props.day2[7].main.temp_max}°C
+                        </p>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="highlight">
+                <p className="date">
+                  {props.day3 !== undefined ? (
+                    <p>{props.day3[0].dt_txt.split(" ")[0]}</p>
+                  ) : (
+                    <></>
+                  )}
+                </p>
+                <div className="status">
+                  <div className="date-status">
+                    <p className="clock">
+                      {props.day3 !== undefined ? (
+                        <p>{props.day3[0].dt_txt.split(" ")[1]}</p>
+                      ) : (
+                        <></>
+                      )}
+                    </p>
+                    <img
+                      className="icon"
+                      src={
+                        props.day3 !== undefined
+                          ? `https://openweathermap.org/img/wn/${props.day3[0].weather[0].icon}@2x.png`
+                          : ""
+                      }
+                      alt=""
+                    />
+                    <div className="temp">
+                      {props.day3 !== undefined ? (
+                        <p>
+                          {props.day3[0].main.temp_min}°C /
+                          {props.day3[0].main.temp_max}°C
+                        </p>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  </div>
+                  <div className="date-status">
+                    <p className="clock">
+                      {props.day3 !== undefined ? (
+                        <p>{props.day3[2].dt_txt.split(" ")[1]}</p>
+                      ) : (
+                        <></>
+                      )}
+                    </p>
+                    <img
+                      className="icon"
+                      src={
+                        props.day3 !== undefined
+                          ? `https://openweathermap.org/img/wn/${props.day3[2].weather[0].icon}@2x.png`
+                          : ""
+                      }
+                      alt=""
+                    />
+                    <div className="temp">
+                      {props.day3 !== undefined ? (
+                        <p>
+                          {props.day3[4].main.temp_min}°C /
+                          {props.day3[4].main.temp_max}°C
+                        </p>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  </div>
+                  <div className="date-status">
+                    <p className="clock">
+                      {props.day3 !== undefined ? (
+                        <p>{props.day3[4].dt_txt.split(" ")[1]}</p>
+                      ) : (
+                        <></>
+                      )}
+                    </p>
+                    <img
+                      className="icon"
+                      src={
+                        props.day3 !== undefined
+                          ? `https://openweathermap.org/img/wn/${props.day3[4].weather[0].icon}@2x.png`
+                          : ""
+                      }
+                      alt=""
+                    />
+                    <div className="temp">
+                      {props.day3 !== undefined ? (
+                        <p>
+                          {props.day3[4].main.temp_min}°C /
+                          {props.day3[4].main.temp_max}°C
+                        </p>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  </div>
+                  <div className="date-status">
+                    <p className="clock">
+                      {props.day3 !== undefined ? (
+                        <p>{props.day3[6].dt_txt.split(" ")[1]}</p>
+                      ) : (
+                        <></>
+                      )}
+                    </p>
+                    <img
+                      className="icon"
+                      src={
+                        props.day3 !== undefined
+                          ? `https://openweathermap.org/img/wn/${props.day3[6].weather[0].icon}@2x.png`
+                          : ""
+                      }
+                      alt=""
+                    />
+                    <div className="temp">
+                      {props.day3 !== undefined ? (
+                        <p>
+                          {props.day3[6].main.temp_min}°C /
+                          {props.day3[6].main.temp_max}°C
+                        </p>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  </div>
+                  <div className="date-status">
+                    <p className="clock">
+                      {props.day3 !== undefined ? (
+                        <p>{props.day3[7].dt_txt.split(" ")[1]}</p>
+                      ) : (
+                        <></>
+                      )}
+                    </p>
+                    <img
+                      className="icon"
+                      src={
+                        props.day3 !== undefined
+                          ? `https://openweathermap.org/img/wn/${props.day3[7].weather[0].icon}@2x.png`
+                          : ""
+                      }
+                      alt=""
+                    />
+                    <div className="temp">
+                      {props.day3 !== undefined ? (
+                        <p>
+                          {props.day3[7].main.temp_min}°C /
+                          {props.day3[7].main.temp_max}°C
+                        </p>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="highlight">
+                <p className="date">
+                  {props.day4 !== undefined ? (
+                    <p>{props.day4[0].dt_txt.split(" ")[0]}</p>
+                  ) : (
+                    <></>
+                  )}
+                </p>
+                <div className="status">
+                  <div className="date-status">
+                    <p className="clock">
+                      {props.day4 !== undefined ? (
+                        <p>{props.day4[0].dt_txt.split(" ")[1]}</p>
+                      ) : (
+                        <></>
+                      )}
+                    </p>
+                    <img
+                      className="icon"
+                      src={
+                        props.day4 !== undefined
+                          ? `https://openweathermap.org/img/wn/${props.day4[0].weather[0].icon}@2x.png`
+                          : ""
+                      }
+                      alt=""
+                    />
+                    <div className="temp">
+                      {props.day4 !== undefined ? (
+                        <p>
+                          {props.day4[0].main.temp_min}°C /
+                          {props.day4[0].main.temp_max}°C
+                        </p>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  </div>
+                  <div className="date-status">
+                    <p className="clock">
+                      {props.day4 !== undefined ? (
+                        <p>{props.day4[2].dt_txt.split(" ")[1]}</p>
+                      ) : (
+                        <></>
+                      )}
+                    </p>
+                    <img
+                      className="icon"
+                      src={
+                        props.day4 !== undefined
+                          ? `https://openweathermap.org/img/wn/${props.day4[2].weather[0].icon}@2x.png`
+                          : ""
+                      }
+                      alt=""
+                    />
+                    <div className="temp">
+                      {props.day4 !== undefined ? (
+                        <p>
+                          {props.day4[4].main.temp_min}°C /
+                          {props.day4[4].main.temp_max}°C
+                        </p>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  </div>
+                  <div className="date-status">
+                    <p className="clock">
+                      {props.day4 !== undefined ? (
+                        <p>{props.day4[4].dt_txt.split(" ")[1]}</p>
+                      ) : (
+                        <></>
+                      )}
+                    </p>
+                    <img
+                      className="icon"
+                      src={
+                        props.day4 !== undefined
+                          ? `https://openweathermap.org/img/wn/${props.day4[4].weather[0].icon}@2x.png`
+                          : ""
+                      }
+                      alt=""
+                    />
+                    <div className="temp">
+                      {props.day4 !== undefined ? (
+                        <p>
+                          {props.day4[4].main.temp_min}°C /
+                          {props.day4[4].main.temp_max}°C
+                        </p>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  </div>
+                  <div className="date-status">
+                    <p className="clock">
+                      {props.day4 !== undefined ? (
+                        <p>{props.day4[6].dt_txt.split(" ")[1]}</p>
+                      ) : (
+                        <></>
+                      )}
+                    </p>
+                    <img
+                      className="icon"
+                      src={
+                        props.day4 !== undefined
+                          ? `https://openweathermap.org/img/wn/${props.day4[6].weather[0].icon}@2x.png`
+                          : ""
+                      }
+                      alt=""
+                    />
+                    <div className="temp">
+                      {props.day4 !== undefined ? (
+                        <p>
+                          {props.day4[6].main.temp_min}°C /
+                          {props.day4[6].main.temp_max}°C
+                        </p>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  </div>
+                  <div className="date-status">
+                    <p className="clock">
+                      {props.day4 !== undefined ? (
+                        <p>{props.day4[7].dt_txt.split(" ")[1]}</p>
+                      ) : (
+                        <></>
+                      )}
+                    </p>
+                    <img
+                      className="icon"
+                      src={
+                        props.day4 !== undefined
+                          ? `https://openweathermap.org/img/wn/${props.day4[7].weather[0].icon}@2x.png`
+                          : ""
+                      }
+                      alt=""
+                    />
+                    <div className="temp">
+                      {props.day4 !== undefined ? (
+                        <p>
+                          {props.day4[7].main.temp_min}°C /
+                          {props.day4[7].main.temp_max}°C
+                        </p>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>

@@ -92,6 +92,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
 }
 
 .nextdays .next-highlights .highlight {
